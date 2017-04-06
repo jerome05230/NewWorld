@@ -1,0 +1,27 @@
+<?php
+$nom="*Nom";
+$prenom="*Prénom";
+$sexe="*Sexe";
+$departement="*Département";
+$cp="*Code Postal";
+$ville="*Ville";
+$adresse="*Adresse";
+$mail="*Mail";
+$telFixe="Téléphone Fixe";
+$telPortable="Téléphone Portable";
+$questSecrete="*Question Secrète";
+$userType="*Type d'Utilisateur";
+$producteur="Producteur";
+$client="Client";
+$pointRelai="Point de Vente";
+$heure="Heure";
+$masculin="Masculin";
+$feminin="Féminin";
+$autre="Autre";
+$de="de";
+$a="à";
+$heure="H";
+$minute="M";
+$login="identifiant";
+$mdp="mot de passe";
+$reponse="réponse";
