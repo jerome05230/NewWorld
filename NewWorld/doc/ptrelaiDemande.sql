@@ -1,10 +1,10 @@
 
 --
--- TABLE: TypeUtilisateur
+-- TABLE: DemandePtRelai
 -- 
 --  
 
-CREATE TABLE TypeUtilisateur (
+CREATE TABLE DemandePtRelai (
 );
 
 -- CHECK Constraints are not supported in Mysql ( as of version 5.x )

@@ -10,10 +10,17 @@
 # Commentaire                        : 
 ------------------------------------------------------------------------------------->
  */
-// Chemins à utiliser pour accéder aux vues/modeles/librairies
-$module = empty($module) ? !empty($_GET['module']) ? $_GET['module'] : 'index' : $module;
-define('CHEMIN_VUE',    'modules/'.$module.'/vues/');
-define('CHEMIN_MODELE', 'modeles/');
-define('CHEMIN_CONTROLEUR', 'modules/'.$module.'/');
-define('CHEMIN_LANGUE', 'langue/');
+// Identifiants pour la base de données.
+$servername = "localhost";
+$username = "adminDbNewWorld";
+$password = "123456789";
+$base= "dbNewWorld";
+
+// Create connection
+$connexion = new mysqli($servername, $username, $password, $base);
+
+// Check connection
+if ($connexion->connect_error) {
+    die("Connection failed: " . $connexion->connect_error);
+} 
 ?>

@@ -11,9 +11,19 @@
 ------------------------------------------------------------------------------------->
 */
 ?>
-		<head><!-- En-tête de page -->
-<link rel="stylesheet" type="text/css" href="style/template.css">
-<title>NewWorld</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Material Design Bootstrap</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
 <script>
 //affiche les formulaires correspondant au type d'utilisateur demandé
 function afficherForm(etat1,etat2){
@@ -69,6 +79,5 @@ function valider_numeroFixe()
 	}
 }
 </script>
-
-		</head>
+</head>
 	
