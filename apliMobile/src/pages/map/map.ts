@@ -4,7 +4,9 @@ import { NavController, IonicPage, NavParams } from 'ionic-angular';
 import { AuthService } from '../../providers/auth-service/auth-service';
 import { VisiteService } from '../../providers/visite-service/visite-service';
 
- 
+import { LoginPage } from '../../pages/login/login';
+
+
 declare var google;
 
 @IonicPage()
@@ -19,7 +21,7 @@ export class MapPage {
 @ViewChild('map') mapElement: ElementRef;
   map: any;
   start = 'gap, france';
-  end = 'la batie-neuve, france';
+  end = 'gap, france';
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -27,12 +29,14 @@ export class MapPage {
   username = '';
   email = '';
 
+  //tableau des points de passage
+  waypts = [];
   
-  constructor(public nav: NavController, private auth: AuthService, public navParams: NavParams, private visiteService: VisiteService) {
+  constructor(public nav: NavController, private auth: AuthService, public navParams: NavParams, private visite: VisiteService) {
     let info = this.auth.getUserInfo();
     this.username = info['name'];
     this.email = info['email'];
-    visiteService.load().subscribe(waypts =>{
+    visite.load().subscribe(waypts =>{
       this.waypts = waypts;
       this.calculateAndDisplayRoute();
     })
@@ -41,7 +45,7 @@ export class MapPage {
 
   public logout() {
     this.auth.logout().subscribe(succ => {
-      this.nav.setRoot('LoginPage')
+      this.nav.push(LoginPage);
     });
   }
 
@@ -53,14 +57,11 @@ export class MapPage {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
       zoom: 25,
       center: {lat: 44.556, lng: 6.079},
-      mapTypeId: 'satellite'
     });
 
     this.map.setTilt(45);
     this.directionsDisplay.setMap(this.map);
   }
-  //tableau des points de passage
-  waypts = [];
 
   calculateAndDisplayRoute() {
     this.directionsService.route({

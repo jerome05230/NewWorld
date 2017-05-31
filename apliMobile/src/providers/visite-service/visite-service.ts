@@ -14,14 +14,13 @@ import { ModelVisite } from '../../models/ModelVisite';
 @Injectable()
 export class VisiteService {
 
-  jsonApiUrl = 'http://172.29.56.3/~jbaroncampos/public_html/NewWorld-JSON/visite.php';
+  jsonApiUrl = 'http://172.29.56.3/~jbaroncampos/NewWorld-JSON/visite.php';
 
   constructor(public http: Http) {
-    console.log('Hello VisiteServiceProvider Provider');
   }
 
   load(): Observable<ModelVisite[]>{
-  	return this.http.get(`${this.jsonApiUrl}?idControleur=2`).map(res => <ModelVisite[]>res.json());
+  	return this.http.get(`${this.jsonApiUrl}?id=2`).map(res => <ModelVisite[]>res.json());
   }
 
 }
