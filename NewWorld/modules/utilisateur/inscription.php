@@ -10,60 +10,62 @@ else
 	$erreurs_inscription = array();
 
 	// Validation des champs suivant les règles
-	if (isset ($_POST['id']))
+	if (isset ($_POST['nom']))
 	{ 
-	  $pseudonyme = $_POST['id'];
+	  $nom = $_POST['nom'];
 	}
 	else
 	{
-	  $pseudonyme="";
+	  $nom="";
 	}
-	if (isset ($_POST['mdp']))
+	if (isset ($_POST['prenom']))
 	{ 
-	  $mdp = $_POST['mdp'];
+	  $prenom = $_POST['prenom'];
 	}
 	else
 	{
-	  $mdp="";
+	  $prenom="";
 	}
-
-	// vérifications
-
-	if ( $int_cp == false){
-	
-		$erreurs_inscription[] = "Code Postale invalide  elle ne doit pas contenire des lettre ! ";
-		
+		if (isset ($_POST['email']))
+	{ 
+	  $email = $_POST['email'];
 	}
-	if($int_cp[2] > 5){
-	
-		$erreurs_inscription[] = "Code Postale invalide ! ";
-		
+	else
+	{
+	  $email="";
 	}
-		
+	if (isset ($_POST['login']))
+	{ 
+	  $login = $_POST['login'];
+	}
+	else
+	{
+	  $login="";
+	}
+		if (isset ($_POST['telFixe']))
+	{ 
+	  $telFixe = $_POST['telFixe'];
+	}
+	else
+	{
+	  $telFixe="";
+	}
+		if (isset ($_POST['telPort']))
+	{ 
+	  $telPort = $_POST['telPort'];
+	}
+	else
+	{
+	  $telPort="";
+	}
 	// Si d'autres erreurs ne sont pas survenues
-	if (empty($erreurs_inscription)) {
-	
-	//list($nom, $prenom,$dateEmb,$adresse,$codePostal,$ville, $mdp, $email, $avatar,$login) =
-		//	  $form_inscription->get_cleaned_data('nom', 'prenom','dateEmb','adresse','codePost','ville', 'mdp', 'email', 'avatar','fonction');
-	
-		// Tentative d'ajout du membre dans la base de données
-		$nom = "";// a remplir
-		$prenom = "";// a remplir
-		$login = "";// a remplir
-		$email = "";// a remplir
-		$telephone = "";// a remplir
-		
-		include CHEMIN_MODELE.'inscription.php';
-
-		// ajouter_membre_dans_bdd() est défini dans ~/modeles/inscription.php
-		
-		$id_utilisateur = ajouter_membre_dans_bdd($nom, $prenom, $login, $email, $telephone);
-
-//code d'envoi de mail 
-		
-		// Affichage de la confirmation de l'inscription
-		//include CHEMIN_VUE.'inscription_effectuee.php';
-		$inscription_effectuee = true;
+	if (empty($erreurs_inscription)&& !empty($nom) && !empty($prenom) && !empty($email) && !empty($login) && !empty($telFixe) && !empty($telPort)) {
+		require_once CHEMIN_MODELE.'authentification.php';
+		// inscription() est défini dans ~/modeles/authentification.php
+		require_once 'mailEtMdp.php';
+		$password= generer_mot_de_passe();
+		$inscription_effectuee= inscription($nom, $prenom, $email, $login, $telFixe, $telPort, $password);
+		include CHEMIN_VUE.'inscription_effectuee.php';
 	} 
 	else 
 	{ 
@@ -72,7 +74,7 @@ else
 			if (23000 == $erreur[0]) {  
 			    // Le code d'erreur 23000 siginife "doublon" dans le standard ANSI SQL
 				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
-				$erreurs_inscription[] = "Cette adresse e-mail ou ce même nom et prénom sont d&eacute;ja utilis&eacute;s.";
+				$erreurs_inscription[] = "Cette adresse e-mail ou ce même nom et prénom sont déja utilisé.";
 				//	include CHEMIN_VUE.'inscription_non_effectuee.php';
 				if (isset ($valeur_probleme[1]))
 				{ 
@@ -81,7 +83,7 @@ else
 				
 			} else {
 
-				$erreurs_inscription[] = "Erreur ajout SQL : cas non trait&eacute; (SQLSTATE = %d) $erreur[0]";
+				$erreurs_inscription[] = "Erreur ajout SQL : cas non traité; (SQLSTATE = %d) $erreur[0]";
 	  		}
                 }
 	//}

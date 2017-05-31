@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+//header
+include'global/head.php';
+// Initialisation
+include 'global/init.php';
+?>
 <body>
-<?php 	
-	// Initialisation
-	include 'global/init.php';
+<?php 
+print_r($_COOKIE);
+print_r($_SESSION);	
 	// Début de la tamporisation de sortie
 	ob_start();
-
 	// Si un module est specifié, on regarde s'il existe
 	if (!empty($_GET['module'])) {
 		$module = dirname(__FILE__).'/modules/'.$_GET['module'].'/';
@@ -32,8 +37,6 @@
 	$contenu = ob_get_clean();
 
 	// Début du code HTML
-		//header
-	include'global/header.php';
 		//nav
 	include 'global/nav.php';
 		//section

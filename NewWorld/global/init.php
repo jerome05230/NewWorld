@@ -1,20 +1,8 @@
-﻿<?php
-/*
-<!-------------------------------------------------------------------------------------
-# Nom du programme                   : nom_du_fichier.html
-# Version                            : 1.0
-# Description                        : Page nom_de_la_page HTML5 du site nom_du_site
-# Date de création                   : jj/mm/aaaa
-# Date de modification               : jj/mm/aaaa
-# Auteur                             : BARON-CAMPOS Jérôme
-# Commentaire                        : 
-------------------------------------------------------------------------------------->
-*/
-?>
-<?php
+﻿<?php session_start();
 // Inclusion du fichier de configuration (qui définit des constantes)
 include 'global/config.php';
-
+// On a besoin du modèle des inscription
+include CHEMIN_MODELE.'authentification.php'; 
 // Désactivation des guillemets magiques
 ini_set('magic_quotes_runtime', 0);
 // set_magic_quotes_runtime(0);
@@ -32,19 +20,31 @@ if (1 == get_magic_quotes_gpc())
 
 // Vérifie si l'utilisateur est connecté   
 function utilisateur_est_connecte() {
- 
-	return !empty($_SESSION['id']);
+	return !empty($_SESSION['username']);
 }
+
+function utilisateur_est_complet()
+{
+	$bool=false;
+	$infos_utilisateur_full=lire_full_infos_utilisateur($_SESSION['username']); 
+	if (null !==$infos_utilisateur_full[0]['adresse'] && null !==$infos_utilisateur_full[0]['cp'] && null !==$infos_utilisateur_full[0]['ville'] && null !==$infos_utilisateur_full[0]['type'] && null !==$infos_utilisateur_full[0]['id_question'] && null !==$infos_utilisateur_full[0]['reponse'])
+	{
+		$bool=true;
+	}
+	return $bool;
+}
+
+
+
+
 // -------version 2 ---------------------------------------------------
 
 // Vérifications pour la connexion automatique
 
-// On a besoin du modèle des inscription
-include CHEMIN_MODELE.'authentification.php';       // Pour la fonction inscription()
 // L'utilisateur n'est pas connecté mais les cookies sont présents
-if (!utilisateur_est_connecte() && !empty($_COOKIE['id']) && !empty($_COOKIE['connexion_auto']))
+/*if (!utilisateur_est_connecte() && !empty($_COOKIE['username']) && !empty($_COOKIE['password']))
 {
-	$infos_utilisateur = lire_infos_utilisateur($_COOKIE['id']);
+	$infos_utilisateur = lire_infos_utilisateur($_COOKIE['username']);
 	
 	if (false !== $infos_utilisateur)
 	{
@@ -54,11 +54,19 @@ if (!utilisateur_est_connecte() && !empty($_COOKIE['id']) && !empty($_COOKIE['co
 		if ($_COOKIE['connexion_auto'] == $hash)
 		{
 			// On enregistre les informations dans la session
-			$_SESSION['id']     = $_COOKIE['id'];
-			$_SESSION['pseudo'] = $infos_utilisateur['nom'];
-			$_SESSION['avatar'] = $infos_utilisateur['avatar'];
-			$_SESSION['email']  = $infos_utilisateur['adresse_email'];
-			$_SESSION['login']  = $infos_utilisateur['login'];
+			
+			$_SESSION['username']     = $_COOKIE['username'];
+			$_SESSION['nom'] = $infos_utilisateur['nom'];
+			$_SESSION['prenom'] = $infos_utilisateur['prenom'];
+			$_SESSION['cp']  = $infos_utilisateur['cp'];
+			$_SESSION['ville']  = $infos_utilisateur['ville'];
+			$_SESSION['adresse']  = $infos_utilisateur['adresse'];
+			$_SESSION['type']  = $infos_utilisateur['type'];
+			$_SESSION['mail']  = $infos_utilisateur['mail'];
+			$_SESSION['telephone_fixe']  = $infos_utilisateur['telephone_fixe'];
+			$_SESSION['telephone_portable']  = $infos_utilisateur['telephone_portable'];
+			//id_client, login, nom, prenom, cp, ville, adresse, type, mail, telephone_fixe, telephone_portable
 		}
 	}
 }
+*/

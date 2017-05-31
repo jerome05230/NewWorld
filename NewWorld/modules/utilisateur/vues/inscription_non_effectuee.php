@@ -10,5 +10,3 @@ if (!empty($erreurs_inscription)) {
 	}
 	
 	echo '</ul>';
-//$form_inscription->fieldsets(array("Saisie de vos informations personnelles " => array('nom' ,'prenom','adresse', 'ville', 'codePostal', 'mdp','mdp_verif', 'email')));
-//echo $form_inscription;
