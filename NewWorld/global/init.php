@@ -27,7 +27,7 @@ function utilisateur_est_complet()
 {
 	$bool=false;
 	$infos_utilisateur_full=lire_full_infos_utilisateur($_SESSION['username']); 
-	if (null !==$infos_utilisateur_full[0]['adresse'] && null !==$infos_utilisateur_full[0]['cp'] && null !==$infos_utilisateur_full[0]['ville'] && null !==$infos_utilisateur_full[0]['type'] && null !==$infos_utilisateur_full[0]['id_question'] && null !==$infos_utilisateur_full[0]['reponse'])
+	if (null !==$infos_utilisateur_full['adresse'] && null !==$infos_utilisateur_full['cp'] && null !==$infos_utilisateur_full['ville'] && null !==$infos_utilisateur_full['type'] && null !==$infos_utilisateur_full['id_question'] && null !==$infos_utilisateur_full['reponse'])
 	{
 		$bool=true;
 	}

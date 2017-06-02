@@ -8,8 +8,6 @@ include 'global/init.php';
 ?>
 <body>
 <?php 
-print_r($_COOKIE);
-print_r($_SESSION);	
 	// Début de la tamporisation de sortie
 	ob_start();
 	// Si un module est specifié, on regarde s'il existe

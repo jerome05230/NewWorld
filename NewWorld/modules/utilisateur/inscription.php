@@ -5,7 +5,6 @@ if (utilisateur_est_connecte()) {
 } 
 else 
 {
-	$inscription_effectuee = false;
 	// Création d'un tableau des erreurs
 	$erreurs_inscription = array();
 
@@ -64,31 +63,12 @@ else
 		// inscription() est défini dans ~/modeles/authentification.php
 		require_once 'mailEtMdp.php';
 		$password= generer_mot_de_passe();
-		$inscription_effectuee= inscription($nom, $prenom, $email, $login, $telFixe, $telPort, $password);
-		include CHEMIN_VUE.'inscription_effectuee.php';
+		$inscription_effectuee = inscription($nom, $prenom, $email, $login, $telFixe, $telPort, $password);
+		include CHEMIN_VUE.'inscription_ok.php';
 	} 
-	else 
-	{ 
-			$erreur =& $id_utilisateur; // Changement de nom de variable (plus lisible)
-			// On vérifie que l'erreur concerne bien un doublon
-			if (23000 == $erreur[0]) {  
-			    // Le code d'erreur 23000 siginife "doublon" dans le standard ANSI SQL
-				preg_match("`Duplicate entry '(.+)' for key \d+`is", $erreur[2], $valeur_probleme);
-				$erreurs_inscription[] = "Cette adresse e-mail ou ce même nom et prénom sont déja utilisé.";
-				//	include CHEMIN_VUE.'inscription_non_effectuee.php';
-				if (isset ($valeur_probleme[1]))
-				{ 
-					$erreurs_inscription[] = $valeur_probleme[1];
-				}
-				
-			} else {
-
-				$erreurs_inscription[] = "Erreur ajout SQL : cas non traité; (SQLSTATE = %d) $erreur[0]";
-	  		}
-                }
-	//}
 	if (! $inscription_effectuee) {
 	  // Affichage du formulaire inscription
 	  	include CHEMIN_VUE.'formulaire_inscription.php';
 	}
 }
+?>
