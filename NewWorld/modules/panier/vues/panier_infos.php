@@ -5,7 +5,6 @@
   <th align="center">Prix Unitaire</th>
   <th align="center">Quantité</th>
   <th align="center">Montant</th>
-  <th align="center">Action</th>
 </tr>
 <?php
 	$total=0;
@@ -20,41 +19,34 @@
 		echo '<td align="right">'.$prix.' &euro;</td>';
 		echo '<td align="right">'.$qte.'</td>';
 		echo '<td align="right">'.$montant.' &euro;</td>';
-		echo '<td align="center">';
-
-
-
-		echo"<form id='ajout' action='index.php?module=panier&action=gestion_panier' method='post'>
+		echo "<td align='left'>
+		<form id='ajout' action='index.php?module=panier&action=gestion_panier' method='post'>
+			<input type='hidden' name='id' value=$ref />
+      		<input type='hidden' name='operation' value='Ajouter au panier' />
 			<div class='row col-lg-12'>
-          		<input type='hidden' name='id' value=$ref />
-          		<div class='row col-lg-3'>
-          			<input type='hidden' name='operation' value='Ajouter au panier' />
-          		</div>	
-          		<div class='row col-lg-3'>
-	            	<input type='number' id='quantite' class='form-control' name='quantite'>
-	            	<label for='quantite'>quantité</label>
+          		<div class='col-lg-6'>
+	            	<input type='number' id='quantite' class='form-control' name='quantite'/>
 	       		</div>
-	       		<div class='row col-lg-3'>
-	            	<button class='submit_button btn btn-primary' type='submit' value='ajout' title='Ajouter au panier'><i class='fa fa-shopping-cart'></i></button>
+	       		<div class='col-lg-6'>
+	            	<button class='submit_button btn btn-primary' type='submit' value='ajout' title='Ajouter au panier'><i class='fa fa-cart-plus'></i></button>
 				</div>
 			</div>
-        </form>";
-		echo"<form id='ajout' action='index.php?module=panier&action=gestion_panier' method='post'>
+        </form>
+        </td>";
+        echo "<td align='left'>
+		<form id='ajout' action='index.php?module=panier&action=gestion_panier' method='post'>
+			<input type='hidden' name='id' value=$ref />
+      		<input type='hidden' name='operation' value='Supprimer du panier' />
 			<div class='row col-lg-12'>
-          		<input type='hidden' name='id' value=$ref />
-          		<div class='row col-lg-3'>
-          			<input type='hidden' name='operation' value='Supprimer du panier' />
-          		</div>	
-          		<div class='row col-lg-3'>
-	            	<input type='number' id='quantite' class='form-control' name='quantite'>
-	            	<label for='quantite'>quantité</label>
+          		<div class='col-lg-6'>
+	            	<input type='number' id='quantite' class='form-control' name='quantite' />
 	       		</div>
-	       		<div class='row col-lg-3'>
-	            	<button class='submit_button btn btn-primary' type='submit' value='ajout' title='Supprimer du panier'><i class='fa fa-shopping-cart'></i></button>
+	       		<div class='col-lg-6'>
+	            	<button class='submit_button btn btn-primary' type='submit' value='ajout' title='Supprimer du panier'><i class='fa fa-cart-plus'></i></button>
 				</div>
 			</div>
-        </form>";
-
+        </form>
+        </td>";
 
 		/*echo"
 		<form name='formAjouterPanier' method='post' action='index.php?modules=panier&action=gestion_panier'>

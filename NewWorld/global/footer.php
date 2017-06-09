@@ -1,5 +1,4 @@
-<!--Footer-->
-<footer class="page-footer center-on-small-only">
+<footer class="page-footer center-on-small-only ">
 
     <!--Footer Links-->
     <div class="container-fluid">

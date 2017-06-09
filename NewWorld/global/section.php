@@ -1,7 +1,7 @@
 <!--section-->
 <div class="container text-center">
 	<div class="row">
-		<div id="gauche" class="col-lg-8">
+		<div id="gauche" class="col-lg-9">
 	  	<div id="texteGauche" style="text-align:center; font-family: 'Great Vibes', cursive; font-size:1.5em;">
 
 
@@ -25,7 +25,7 @@
 	        <div class="card-block">
 	        	<h4 class="card-title">Agriculteurs, éleveurs</h4>
 	          <p class="white-text">Vous souhaitez proposer au juste prix des produits de qualité, sains, frais et de saison.</p>
-	          <a class="btn btn-default" href="inscriptionNW.php?role=producteur">S'inscrire</a>
+	          <a class="btn btn-default" href="index.php?module=utilisateur&action=inscription"">S'inscrire</a>
 	        </div>
 	        <div class="card-footer text-muted default-color-dark white-text">
 	        	<p>déjà 243 inscrits</p>
@@ -33,15 +33,14 @@
 	      </div>
 	      <!--fin carte producteur-->
 	      <!--carte consommateur-->	
-	      <div class="card col-xs-12 card-info text-center  col-lg-4 offset-lg-1 offset-md-1">
+	      <div class="card col-xs-12 card-info text-center  col-lg-3 offset-lg-1 offset-md-1">
 	      	<div class="card-header default-color-dark white-text">
 	        	Consommateur
 	        </div>
 	      	<div class="card-block">
 	        	<h4 class="card-title">Adulte éco-responsable</h4>
-	          <p class="white-text">Vous êtes un père ou une mère de famille responsable qui sait non seulement que l'on doit manger sain mais aussi que pour maintenir un centre ville et des campagnes peuplés, il est nécessaire de donne leurs chances aux producteurs et artisants.Les emplois que vous maintenez aujourd'hui seront peut-être ceux de vos enfants. Il faut développer l'activité locale en réduisant les coûts de transport ainsi que les intermédiaires.
-	        			Vous souhaitez proposer au juste prix des produits de qualité, sains, frais et de saison.</p>
-	          <a class="btn btn-default" href="inscriptionNW.php?role=client">S'inscrire</a>
+	          <p class="white-text">Vous êtes un père ou une mère de famille responsable qui sait non seulement que l'on doit manger sain mais aussi que pour maintenir un centre ville et des campagnes peuplés, il est nécessaire de donne leurs chances aux producteurs et artisants.Les emplois que vous maintenez aujourd'hui seront peut-être ceux de vos enfants.</p>
+	          <a class="btn btn-default" href="index.php?module=utilisateur&action=inscription""">S'inscrire</a>
 	        </div>
 	        <div class="card-footer text-muted default-color-dark white-text">
 	        	<p>déjà 5243 inscrits</p>
@@ -56,7 +55,7 @@
 	        <div class="card-block">
 	        	<h4 class="card-title">Artisan de l'alimentaire</h4>
 	          <p class="white-text">Vous transformez les produits frais locaux et souhaitez maintenir votre commerce de centre ville face à l'omniprésence des grandes surfaces. Vous voyez chaque jour autour de vous des magasins qui ferment. NewWorld peut vous permettre un complément d'activité. Tentez cela ne coûte rien.</p>
-	          <a class="btn btn-default" href="inscriptionNW.php?role=distributeur">S'inscrire</a>
+          	<a class="btn btn-default" href="index.php?module=utilisateur&action=inscription"">S'inscrire</a>
 	        </div>
 	        <div class="card-footer text-muted default-color-dark white-text">
 	        	<p>déjà 302 inscrits</p>
@@ -65,7 +64,7 @@
 	      <!--fin carte consommateur--> 		
 	  	</div><!-- fin de la row des cartes -->
 		</div><!--fin de la div gauche -->
-		<div id="droite"class="col-lg-4" >
+		<div id="droite"class="col-lg-3" >
 		<!--Card-->
 	  	<div class="card">
 	    	<!--Card image-->

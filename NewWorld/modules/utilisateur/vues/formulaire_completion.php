@@ -22,7 +22,7 @@
     <div class="card">
       <div class="card-block">
         <!--Header-->
-        <div class="form-header  purple darken-4">
+        <div class="form-header  blue darken-4">
             <h3><i class="fa fa-lock"></i>Completion Profil:</h3>
         </div>
         <!--Body-->

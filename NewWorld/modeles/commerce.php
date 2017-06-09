@@ -35,7 +35,7 @@ function chargerRayons(){
 }
 function chargerProduits($produit){
 	global $connexion;
-	$requeteLotsTxt = "SELECT * FROM lots WHERE id_produit=$produit";
+	$requeteLotsTxt = "SELECT id_lot, qte, dateRecolte, nbJourConserv, uniteVente, modeProduction, modeRamassage, pu, nom, prenom, ville, libelle FROM lots l  INNER JOIN clients c ON l.id_utilisateur = c.id_client INNER JOIN produits p ON p.id_produit = l.id_produit WHERE l.id_produit=$produit";
 	$requeteLots = mysqli_query($connexion, $requeteLotsTxt) or die('Erreur SQL !<br>'.$requeteLotsTxt.'<br>'.mysqli_error($connexion));
 	$result="";
 	$cpt=0;
@@ -46,9 +46,23 @@ function chargerProduits($produit){
 	}
     return $result;
 }
+function chargerTousProduits(){
+	global $connexion;
+	$requeteLotsTxt = "SELECT id_lot, qte, dateRecolte, nbJourConserv, uniteVente, modeProduction, modeRamassage, pu, nom, prenom, ville, libelle FROM lots l  INNER JOIN clients c ON l.id_utilisateur = c.id_client INNER JOIN produits p ON p.id_produit = l.id_produit";
+	$requeteLots = mysqli_query($connexion, $requeteLotsTxt) or die('Erreur SQL !<br>'.$requeteLotsTxt.'<br>'.mysqli_error($connexion));
+	$result="";
+	$cpt=0;
+	while($data = mysqli_fetch_assoc($requeteLots))  
+    { 
+		$result[$cpt]=$data; 
+		$cpt++;
+	}
+    return $result;
+}
+
 function chargerLot($lot){
 	global $connexion;
-	$requeteLotTxt = "SELECT id_lot, qte, dateRecolte, nbJourConserv, uniteVente, modeProduction, ramassageManu, pu, id_utilisateur FROM lots WHERE id_lot=$lot";
+	$requeteLotTxt = "SELECT id_lot, qte, dateRecolte, nbJourConserv, uniteVente, modeProduction, modeRamassage, pu, id_utilisateur FROM lots WHERE id_lot=$lot";
 	$requeteLot = mysqli_query($connexion, $requeteLotTxt) or die('Erreur SQL !<br>'.$requeteLotTxt.'<br>'.mysqli_error($connexion));
 	$result="";
 	if($data = mysqli_fetch_assoc($requeteLot))  
