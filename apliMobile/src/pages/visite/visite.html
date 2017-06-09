@@ -13,7 +13,7 @@
 
 <ion-content padding>
   <ion-list *ngFor="let waypt of waypts">
-  {{waypt.location}}
-  <button ion-button (click)="validate()"><ion-icon name="ios-thumbs-up-outline"></ion-icon></button>
+    {{waypt.nom}} {{waypt.prenom}} {{waypt.location}}
+    <button ion-button (click)="openModal({visId: waypt.id_ligne_visite})"><ion-icon name="ios-thumbs-up-outline"></ion-icon></button>
   </ion-list>
 </ion-content>

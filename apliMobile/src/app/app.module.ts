@@ -10,12 +10,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { AuthService } from './../providers/auth-service/auth-service';
+import { CarteService } from '../providers/carte-service/carte-service';
+import { ValidateService } from '../providers/validate-service/validate-service';
 
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 import { MapPage } from '../pages/map/map';
 import { VisitePage } from '../pages/visite/visite';
-import { VisiteService } from '../providers/visite-service/visite-service';
+import { ModalContentPage } from '../pages/visite/visite';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { VisiteService } from '../providers/visite-service/visite-service';
     VisitePage,
     MapPage,
     TabsPage,
-    LoginPage
+    LoginPage, 
+    ModalContentPage
   ],
   imports: [
     BrowserModule,
@@ -37,14 +41,16 @@ import { VisiteService } from '../providers/visite-service/visite-service';
     VisitePage,
     MapPage,
     TabsPage,
-    LoginPage
+    LoginPage, 
+    ModalContentPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    VisiteService
+    CarteService,
+    ValidateService
   ]
 })
 export class AppModule {}

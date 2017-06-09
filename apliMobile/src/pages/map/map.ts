@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, IonicPage, NavParams } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth-service/auth-service';
-import { VisiteService } from '../../providers/visite-service/visite-service';
+import { CarteService } from '../../providers/carte-service/carte-service';
 
 import { LoginPage } from '../../pages/login/login';
 
@@ -32,13 +32,18 @@ export class MapPage {
   //tableau des points de passage
   waypts = [];
   
-  constructor(public nav: NavController, private auth: AuthService, public navParams: NavParams, private visite: VisiteService) {
+  constructor(public nav: NavController, private auth: AuthService, public navParams: NavParams, private carte: CarteService) {
     let info = this.auth.getUserInfo();
     this.username = info['name'];
     this.email = info['email'];
-    visite.load().subscribe(waypts =>{
-      this.waypts = waypts;
+    carte.load().subscribe(waypts =>{
+      for (var item in waypts) {
+      this.waypts[item]= {
+      location:waypts[item]['location'],
+      stopover:waypts[item]['stopover']
+      };
       this.calculateAndDisplayRoute();
+      }
     })
 
   }

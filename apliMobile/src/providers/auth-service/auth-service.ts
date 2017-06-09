@@ -39,7 +39,6 @@ export class AuthService {
     } else {
       return Observable.create(observer => {
 
-        console.log("login",userData);
         var id=userData.id; 
         var nom=userData.nom; 
         var prenom=userData.prenom; 
